@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111114">
+  <meta name="description" content="Crimson Eclipse — an interactive illustrated story.">
+  <title>Crimson Eclipse — An Interactive Story</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Crimson Eclipse home"><span class="brand-mark">◐</span> CRIMSON ECLIPSE</a>
+    <div class="top-actions">
+      <a class="icon-btn editor-link" href="editor.html" title="Open story editor">✎ <span>Story editor</span></a>
+      <button class="icon-btn" id="soundToggle" aria-pressed="false" title="Toggle ambient sound">♫ <span>Sound off</span></button>
+      <button class="icon-btn" id="contrastToggle" aria-pressed="false" title="Toggle high contrast">◐ <span>Contrast</span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="intro">
+      <div class="intro-art" aria-hidden="true">
+        <div class="moon-halo"></div><div class="moon"></div>
+        <div class="ridge ridge-back"></div><div class="ridge ridge-front"></div>
+        <div class="tiny-star star-one">✦</div><div class="tiny-star star-two">✧</div>
+      </div>
+      <div class="intro-copy">
+        <p class="eyebrow">AN INTERACTIVE GRAPHIC NOVEL</p>
+        <h1>THE LAST<br><em>MOON</em></h1>
+        <p class="intro-text">When the moon began to disappear, the world forgot how to dream.</p>
+        <a class="start-link" href="#chapter-one">BEGIN THE STORY <span>↓</span></a>
+      </div>
+      <div class="vertical-note">ISSUE 001 &nbsp; · &nbsp; A STORY IN SCROLLS</div>
+    </section>
+
+    <section class="chapter-heading" id="chapter-one">
+      <span class="chapter-number">CHAPTER 01</span>
+      <h2>The girl who<br><em>remembered</em></h2>
+      <p>Somewhere beyond the edge of the map, one memory refused to fade.</p>
+    </section>
+
+    <section class="comic-panel panel-hand" data-reveal>
+      <div class="panel-caption">THE NIGHT THE SKY WENT SILENT</div>
+      <svg class="art art-hand" viewBox="0 0 900 540" role="img" aria-label="A hand reaches toward a glowing red moon in a circular stone mechanism">
+        <defs>
+          <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 9 L9 0" stroke="#242328" stroke-width="1"/></pattern>
+          <radialGradient id="redGlow"><stop offset="0" stop-color="#ff313b" stop-opacity=".8"/><stop offset="1" stop-color="#d90020" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="900" height="540" fill="#f5f0e8"/>
+        <path d="M-30 70 L180 0 240 540 -30 540Z" fill="#e10c2a"/>
+        <circle cx="565" cy="275" r="212" fill="none" stroke="#242328" stroke-width="5"/>
+        <circle cx="565" cy="275" r="185" fill="none" stroke="#242328" stroke-width="2" stroke-dasharray="8 8"/>
+        <circle cx="565" cy="275" r="146" fill="url(#redGlow)"/>
+        <circle cx="565" cy="275" r="124" fill="#f8f4ed" stroke="#d90025" stroke-width="25"/>
+        <path d="M468 199 Q522 143 589 163 M650 205 Q688 259 658 316 M493 350 Q541 386 602 360" fill="none" stroke="#b8b1a8" stroke-width="4"/>
+        <path d="M86 160 Q142 117 205 145 L294 180 Q325 193 342 219 L418 259 Q438 270 428 292 L407 304 Q431 325 414 342 L390 346 Q401 367 381 380 L348 375 Q350 403 326 410 L258 397 204 372 150 337 92 293Z" fill="#fffdf7" stroke="#242328" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M270 187 Q296 157 316 143 Q333 133 342 145 Q350 157 336 176 L302 220 M319 221 L368 171 Q384 155 396 167 Q407 179 390 198 L351 246 M348 250 L402 217 Q420 207 429 220 Q438 233 420 246 L371 281 M237 280 Q277 255 302 260 L343 277" fill="none" stroke="#242328" stroke-width="4" stroke-linecap="round"/>
+        <path d="M-10 470 Q155 422 279 467 T525 480" fill="none" stroke="#242328" stroke-width="4"/>
+        <path d="M42 480 L90 444 112 493 147 451 177 497 219 463 249 507" fill="url(#hatch)" stroke="#242328" stroke-width="2"/>
+        <text x="565" y="455" text-anchor="middle" font-size="16" letter-spacing="5" fill="#242328">DON'T LET IT GO DARK</text>
+      </svg>
+      <p class="panel-narration">At midnight, the moon turned red. At 12:01, every clock stopped.</p>
+    </section>
+
+    <section class="story-beat" data-reveal>
+      <div class="beat-index">01 / A MEMORY</div>
+      <blockquote>“My grandmother said the moon was not a place. It was a promise.”</blockquote>
+      <p>Mara was the only person who still remembered the old stories. Everyone else remembered a sky with nothing in it.</p>
+    </section>
+
+    <section class="wide-panel" data-reveal>
+      <div class="wide-art">
+        <svg viewBox="0 0 1000 560" role="img" aria-label="A mysterious red moon suspended between enormous ruined towers">
+          <rect width="1000" height="560" fill="#f7f4ed"/>
+          <circle cx="540" cy="215" r="160" fill="#e10b28"/>
+          <circle cx="540" cy="215" r="185" fill="none" stroke="#242328" stroke-width="5"/>
+          <path d="M0 510 L75 330 130 350 190 185 242 220 296 90 340 110 390 360 430 560Z" fill="#fffdf8" stroke="#242328" stroke-width="5"/>
+          <path d="M1000 560 L940 350 900 370 850 150 808 170 755 55 710 80 670 340 625 560Z" fill="#fffdf8" stroke="#242328" stroke-width="5"/>
+          <path d="M35 560 L105 420 155 460 215 350 275 400 310 560 M705 560 L755 420 810 465 865 360 930 430 970 560" fill="none" stroke="#242328" stroke-width="4"/>
+          <path d="M0 520 Q240 480 400 525 T1000 510 L1000 560 0 560Z" fill="#242328"/>
+          <path d="M490 378 L590 378 575 560 505 560Z" fill="#e10b28"/>
+          <g stroke="#242328" stroke-width="2" opacity=".75"><path d="M70 385 L125 405 M195 250 L230 267 M790 220 L825 204 M880 390 L925 370 M330 190 L350 215 M685 175 L710 192"/></g>
+        </svg>
+      </div>
+      <div class="wide-caption"><span>FIG. 02</span><span>THE GATE AT THE END OF THE WORLD</span></div>
+    </section>
+
+    <section class="story-beat split-beat" data-reveal>
+      <div><div class="beat-index">02 / THE CALL</div><h2>A door appeared<br>where the sea <em>ended.</em></h2></div>
+      <p>It had no handle. No hinges. Only a small inscription carved into the stone: <strong>REMEMBER WHO YOU WERE.</strong></p>
+    </section>
+
+    <section class="character-panel" data-reveal>
+      <div class="character-art">
+        <svg viewBox="0 0 440 650" role="img" aria-label="Comic illustration of Mara, a young traveler in a blue coat and pale scarf">
+          <rect width="440" height="650" fill="#f5f0e8"/>
+          <rect x="34" y="28" width="372" height="594" fill="none" stroke="#242328" stroke-width="2"/>
+          <path d="M88 650 Q92 500 143 395 L290 395 Q353 482 365 650Z" fill="#1453a6" stroke="#242328" stroke-width="5"/>
+          <path d="M143 395 L206 470 290 395 310 650 122 650Z" fill="#0c397b" stroke="#242328" stroke-width="4"/>
+          <path d="M143 395 Q98 320 119 220 Q130 139 213 126 Q300 127 316 220 L300 370 260 422 170 420Z" fill="#fffdf7" stroke="#242328" stroke-width="5"/>
+          <path d="M124 240 Q85 140 167 88 Q239 48 292 111 Q336 159 310 260 L290 225 Q282 151 235 139 Q195 175 148 174Z" fill="#242328"/>
+          <path d="M157 215 Q178 180 223 186 Q268 192 276 239 L264 295 Q244 333 209 330 Q171 322 157 278Z" fill="#fffdf7" stroke="#242328" stroke-width="4"/>
+          <path d="M181 235 Q197 222 209 232 M236 230 Q250 221 261 234" fill="none" stroke="#242328" stroke-width="4" stroke-linecap="round"/>
+          <path d="M222 238 L211 267 230 272 M197 299 Q219 310 242 294" fill="none" stroke="#242328" stroke-width="3" stroke-linecap="round"/>
+          <path d="M132 333 Q190 382 285 326 L310 381 Q246 432 164 398Z" fill="#fffdf7" stroke="#242328" stroke-width="4"/>
+          <path d="M125 409 L190 469 165 520 120 485 M287 406 L244 468 280 516 320 482" fill="none" stroke="#242328" stroke-width="4"/>
+          <path d="M150 530 L180 555 M270 548 L299 520 M206 485 L212 650 M240 480 L245 650" stroke="#fffdf7" stroke-width="2" opacity=".65"/>
+        </svg>
+      </div>
+      <div class="character-copy">
+        <p class="eyebrow">THE LAST WITNESS</p>
+        <h2>Her name was<br><em>Mara.</em></h2>
+        <p>She carried a blue coat, a broken compass, and the one memory the darkness could not erase.</p>
+        <div class="character-stats"><span>AGE <b>UNKNOWN</b></span><span>MISSION <b>FIND THE MOON</b></span></div>
+      </div>
+    </section>
+
+    <section id="customChapters" aria-label="Additional chapters"></section>
+
+    <section class="ending" data-reveal>
+      <div class="ending-moon">◯</div>
+      <p class="eyebrow">END OF CHAPTER ONE</p>
+      <h2>The story is not<br>over <em>yet.</em></h2>
+      <p>Some doors only open when you remember.</p>
+      <button class="continue-btn" id="continueBtn">CONTINUE TO CHAPTER TWO <span>↗</span></button>
+      <p class="chapter-two" id="chapterTwo" hidden>CHAPTER TWO IS COMING — THE GATE HAS HEARD YOU.</p>
+    </section>
+  </main>
+
+  <footer><span>CRIMSON ECLIPSE © 2026</span><a href="#top">BACK TO THE BEGINNING ↑</a><span>MADE FOR THE CURIOUS</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
