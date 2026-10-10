@@ -1,0 +1,74 @@
+name: Validate Crimson Eclipse
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Check website files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify required project files
+        run: |
+          test -f index.html
+          test -f editor.html
+          test -f styles.css
+          test -f script.js
+          test -f editor.js
+          test -f README.md
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check editor.js
+
+      - name: Verify local HTML asset references
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const htmlFiles = ['index.html', 'editor.html'];
+          let failed = false;
+          for (const htmlFile of htmlFiles) {
+            const html = fs.readFileSync(htmlFile, 'utf8');
+            const refs = [...html.matchAll(/(?:src|href)=["']([^"'#]+)["']/g)]
+              .map(match => match[1])
+              .filter(ref => !/^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(ref));
+            for (const ref of refs) {
+              const path = decodeURIComponent(ref.split('?')[0]);
+              if (path && !fs.existsSync(path)) {
+                console.error(`${htmlFile}: missing local asset: ${path}`);
+                failed = true;
+              }
+            }
+          }
+          if (failed) process.exit(1);
+          console.log('Required files, JavaScript syntax, and local HTML references passed.');
+          NODE
+
+      - name: Package website
+        run: |
+          mkdir -p dist
+          cp index.html editor.html styles.css script.js editor.js README.md dist/
+          if [ -d assets ]; then cp -r assets dist/assets; fi
+
+      - name: Upload website artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: crimson-eclipse-website
+          path: dist/
+          if-no-files-found: error
