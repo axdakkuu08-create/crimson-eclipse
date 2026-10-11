@@ -61,11 +61,17 @@ soundToggle.addEventListener('click', () => {
 });
 
 continueBtn.addEventListener('click', () => {
+  const chapterContent = document.getElementById('chapterTwoContent');
+  if (chapterContent) {
+    chapterContent.hidden = false;
+    chapterContent.classList.add('revealed');
+    chapterContent.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
   chapterTwo.hidden = false;
+  chapterTwo.textContent = 'CHAPTER TWO UNLOCKED — THE GATE IS OPEN.';
   continueBtn.textContent = 'CHAPTER TWO UNLOCKED';
   continueBtn.disabled = true;
   continueBtn.style.opacity = '.7';
-  chapterTwo.scrollIntoView({behavior: 'smooth', block: 'center'});
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
