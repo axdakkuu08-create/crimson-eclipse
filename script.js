@@ -225,6 +225,94 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 })();
 
 
+// Load repository-published chapters. Only a GitHub-authorized workflow can update chapters.json.
+(async function renderPublishedChapters(){
+  const target = document.getElementById('customChapters');
+  if (!target) return;
+  try {
+    const response = await fetch('chapters.json', {cache:'no-store'});
+    if (!response.ok) return;
+    const chapters = await response.json();
+    if (!Array.isArray(chapters)) return;
+    chapters.forEach((chapter, index) => {
+      const section = document.createElement('section');
+      section.className = 'custom-chapter published-owner-chapter';
+      section.dataset.reveal = '';
+      const label = document.createElement('div');
+      label.className = 'custom-label';
+      label.textContent = chapter.kicker || ('CHAPTER ' + String(index + 3).padStart(2, '0'));
+      section.appendChild(label);
+      const heading = document.createElement('h2');
+      heading.textContent = chapter.title || 'Untitled chapter';
+      section.appendChild(heading);
+      if (chapter.image) {
+        const img = document.createElement('img');
+        img.src = chapter.image;
+        img.alt = chapter.imageAlt || chapter.title || 'Chapter illustration';
+        img.loading = 'lazy';
+        img.onerror = () => img.remove();
+        img.className = 'chapter-cover';
+        section.appendChild(img);
+      }
+      const body = document.createElement('p');
+      body.textContent = chapter.body || '';
+      section.appendChild(body);
+      (Array.isArray(chapter.panels) ? chapter.panels : []).forEach((panel, panelIndex) => {
+        const article = document.createElement('article');
+        article.className = 'published-comic-panel';
+        if (panel.caption) {
+          const caption = document.createElement('h3');
+          caption.className = 'published-panel-caption';
+          caption.textContent = panel.caption;
+          article.appendChild(caption);
+        }
+        if (panel.image) {
+          const img = document.createElement('img');
+          img.src = panel.image;
+          img.alt = panel.imageAlt || panel.caption || ('Comic panel ' + (panelIndex + 1));
+          img.loading = 'lazy';
+          img.onerror = () => img.remove();
+          article.appendChild(img);
+        }
+        if (panel.narration) {
+          const narration = document.createElement('p');
+          narration.className = 'published-panel-narration';
+          narration.textContent = panel.narration;
+          article.appendChild(narration);
+        }
+        if (panel.dialogue) {
+          const dialogue = document.createElement('blockquote');
+          dialogue.className = 'published-panel-dialogue';
+          dialogue.textContent = panel.dialogue;
+          article.appendChild(dialogue);
+        }
+        section.appendChild(article);
+      });
+      if (chapter.ending) {
+        const ending = document.createElement('p');
+        ending.className = 'published-chapter-ending';
+        ending.textContent = chapter.ending;
+        section.appendChild(ending);
+      }
+      target.appendChild(section);
+    });
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      }), {threshold:0.12});
+      target.querySelectorAll('.published-owner-chapter[data-reveal]').forEach(el => observer.observe(el));
+    } else {
+      target.querySelectorAll('.published-owner-chapter').forEach(el => el.classList.add('revealed'));
+    }
+  } catch (error) {
+    console.warn('Published chapters could not be loaded.', error);
+  }
+})();
+
+
 // Chapter Two cinematic motion + interactive relic panel (vanilla JS, no dependencies).
 (function enhanceChapterTwo(){
   const chapter = document.getElementById('chapterTwoContent');
