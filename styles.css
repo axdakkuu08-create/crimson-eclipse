@@ -86,3 +86,28 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:26px clamp(18
 .chapter-hero-illustration{margin:30px 0 38px;border:1px solid var(--ink);background:#17171b;box-shadow:9px 9px 0 rgba(217,13,43,.16);overflow:hidden}
 .chapter-hero-illustration img{display:block;width:100%;height:auto;max-height:560px;object-fit:cover;margin:0;border:0}
 .chapter-hero-illustration figcaption{padding:12px 15px;color:#d9d0c7;background:#17171b;font:10px 'DM Mono',monospace;letter-spacing:.12em}
+
+/* Story-first pacing: cinematic artwork, expressive text, generous breathing room */
+.reading-beat{max-width:720px;margin:clamp(72px,10vw,138px) auto;padding:0 26px}
+.reading-beat>p{font-family:'DM Sans',sans-serif;font-size:clamp(17px,1.8vw,20px);line-height:2;color:#49453f;letter-spacing:.005em}
+.reading-beat blockquote{font-size:clamp(30px,4.6vw,52px);line-height:1.18}
+.story-line{margin-top:28px!important;padding-left:18px;border-left:2px solid var(--red);font-family:'Playfair Display',serif!important;font-style:italic;font-size:clamp(20px,2.5vw,27px)!important;color:var(--ink)!important}
+.dramatic-heading{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-.065em;margin:0 0 28px}
+.dramatic-heading em{font-family:'Playfair Display',serif;color:var(--red);font-weight:600}
+.ink-message{padding:20px 24px!important;border-left:4px solid var(--red);background:#eae1d6;font:600 clamp(17px,2.4vw,24px)/1.5 'DM Mono',monospace!important;letter-spacing:.035em;margin:32px 0 0!important}
+.narrative-art{max-width:1080px;margin:clamp(52px,8vw,100px) auto;padding:0 clamp(12px,4vw,40px)}
+.narrative-art svg{display:block;width:100%;height:auto;border:1px solid #17171b;box-shadow:0 18px 55px rgba(30,18,25,.13)}
+.narrative-art figcaption{display:flex;gap:16px;align-items:center;padding:13px 2px;color:#77736f;font:10px 'DM Mono',monospace;letter-spacing:.11em}
+.narrative-art figcaption span{color:var(--red);white-space:nowrap}
+.chapter-heading p{font-size:17px}
+.panel-narration{max-width:680px}
+body.reader-mode{--paper:#f8f2e7}
+body.reader-mode main{max-width:1040px;margin:auto}
+body.reader-mode .intro-art,body.reader-mode .vertical-note,body.reader-mode .top-actions #soundToggle{display:none}
+body.reader-mode .intro{grid-template-columns:1fr;min-height:55vh}
+body.reader-mode .intro-copy{max-width:820px;margin:auto;padding:70px 28px}
+body.reader-mode .story-beat p,body.reader-mode .custom-chapter>p{font-size:clamp(18px,2vw,21px);line-height:2.05}
+body.reader-mode .narrative-art{max-width:900px}
+body.reader-mode .topbar{background:rgba(248,242,231,.96)}
+@media(max-width:760px){.narrative-art{margin:55px auto}.narrative-art figcaption{font-size:9px;line-height:1.6}.reading-beat{margin:78px auto}.ink-message{padding:16px!important}}
+@media(prefers-reduced-motion:reduce){.narrative-art svg{scroll-behavior:auto}}
