@@ -81,22 +81,65 @@ continueBtn.addEventListener('click', () => {
   const dots = Array.from(root.querySelectorAll('.slide-dot'));
   const prev = root.querySelector('#slidePrev');
   const next = root.querySelector('#slideNext');
+  if (!slides.length || !prev || !next) return;
+
   let active = 0;
-  function showSlide(index) {
+  let timer = null;
+  let touchStartX = 0;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const delay = 5200;
+
+  const status = document.createElement('span');
+  status.className = 'slide-status';
+  status.setAttribute('aria-live', 'polite');
+  status.textContent = '1 / ' + slides.length;
+  const controls = root.querySelector('.slideshow-controls');
+  if (controls) controls.insertBefore(status, next);
+
+  function showSlide(index, announce = true) {
     active = (index + slides.length) % slides.length;
     slides.forEach((slide, i) => {
       slide.hidden = i !== active;
       slide.classList.toggle('is-active', i === active);
+      slide.setAttribute('aria-hidden', String(i !== active));
     });
     dots.forEach((dot, i) => {
       dot.classList.toggle('is-active', i === active);
       dot.setAttribute('aria-pressed', String(i === active));
     });
+    status.textContent = (active + 1) + ' / ' + slides.length;
+    if (announce) {
+      const caption = slides[active].querySelector('figcaption');
+      if (caption) status.setAttribute('aria-label', caption.textContent);
+    }
   }
-  prev.addEventListener('click', () => showSlide(active - 1));
-  next.addEventListener('click', () => showSlide(active + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
-  showSlide(0);
+  function stopAuto(){ if (timer) window.clearInterval(timer); timer = null; }
+  function startAuto(){
+    stopAuto();
+    if (reducedMotion || document.hidden) return;
+    timer = window.setInterval(() => showSlide(active + 1, false), delay);
+  }
+  prev.addEventListener('click', () => { showSlide(active - 1); startAuto(); });
+  next.addEventListener('click', () => { showSlide(active + 1); startAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); startAuto(); }));
+  root.addEventListener('mouseenter', stopAuto);
+  root.addEventListener('mouseleave', startAuto);
+  root.addEventListener('focusin', stopAuto);
+  root.addEventListener('focusout', event => {
+    if (!root.contains(event.relatedTarget)) startAuto();
+  });
+  root.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0].clientX;
+    stopAuto();
+  }, {passive:true});
+  root.addEventListener('touchend', event => {
+    const delta = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(delta) > 45) showSlide(active + (delta < 0 ? 1 : -1));
+    startAuto();
+  }, {passive:true});
+  document.addEventListener('visibilitychange', () => document.hidden ? stopAuto() : startAuto());
+  showSlide(0, false);
+  startAuto();
 })();
 
 
