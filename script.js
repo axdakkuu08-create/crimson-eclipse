@@ -74,6 +74,32 @@ continueBtn.addEventListener('click', () => {
   continueBtn.style.opacity = '.7';
 });
 
+(function setupComicSlideshow(){
+  const root = document.querySelector('.comic-slideshow');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('.slide'));
+  const dots = Array.from(root.querySelectorAll('.slide-dot'));
+  const prev = root.querySelector('#slidePrev');
+  const next = root.querySelector('#slideNext');
+  let active = 0;
+  function showSlide(index) {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.hidden = i !== active;
+      slide.classList.toggle('is-active', i === active);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === active);
+      dot.setAttribute('aria-pressed', String(i === active));
+    });
+  }
+  prev.addEventListener('click', () => showSlide(active - 1));
+  next.addEventListener('click', () => showSlide(active + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+  showSlide(0);
+})();
+
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', event => {
     const target = document.querySelector(link.getAttribute('href'));
