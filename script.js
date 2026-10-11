@@ -28,6 +28,15 @@ contrastToggle.addEventListener('click', () => {
   contrastToggle.setAttribute('aria-pressed', String(active));
 });
 
+const readingModeToggle = document.getElementById('readingModeToggle');
+if (readingModeToggle) {
+  readingModeToggle.addEventListener('click', () => {
+    const active = document.body.classList.toggle('reader-mode');
+    readingModeToggle.setAttribute('aria-pressed', String(active));
+    readingModeToggle.innerHTML = active ? '▤ <span>Exit read mode</span>' : '▤ <span>Read mode</span>';
+  });
+}
+
 let audioContext = null;
 let oscillator = null;
 let gain = null;
