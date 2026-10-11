@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">The Gate Beneath the Sea</title><desc id="desc">Mara stands before an ancient gate on a deserted shore beneath a crimson eclipse.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#10121e"/><stop offset=".58" stop-color="#54202f"/><stop offset="1" stop-color="#d16b58"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#283746"/><stop offset="1" stop-color="#10131c"/></linearGradient><radialGradient id="glow"><stop stop-color="#ff334b" stop-opacity=".55"/><stop offset="1" stop-color="#ff334b" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="620" fill="url(#sky)"/>
+<circle cx="880" cy="170" r="175" fill="url(#glow)"/><circle cx="880" cy="170" r="104" fill="#df1734"/><circle cx="880" cy="170" r="121" fill="none" stroke="#ffb0a2" stroke-opacity=".65" stroke-width="3"/>
+<path d="M0 345 95 300 180 330 265 270 340 315 430 255 520 330 620 290 720 338 810 305 900 335 1010 285 1100 330 1200 290V620H0Z" fill="#1a1b27"/>
+<path d="M0 405Q180 375 340 412T650 404T930 412T1200 390V620H0Z" fill="url(#water)"/>
+<path d="M0 450Q160 428 300 453T600 449T900 455T1200 438M0 505Q200 485 380 510T750 506T1200 490" fill="none" stroke="#a7a1a5" stroke-opacity=".45" stroke-width="3"/>
+<path d="M365 460V270Q365 205 430 205H675Q740 205 740 270V460H680V280H425V460Z" fill="#171821" stroke="#08090e" stroke-width="9"/>
+<path d="M455 460V315H650V460" fill="#0b0c12" stroke="#d9203c" stroke-width="4"/><path d="M552 320V450" stroke="#d9203c" stroke-width="2" stroke-dasharray="8 11"/>
+<g fill="#ff4a5c"><circle cx="425" cy="250" r="5"/><circle cx="680" cy="250" r="5"/><circle cx="450" cy="290" r="4"/><circle cx="655" cy="290" r="4"/></g>
+<path d="M0 555 110 532 220 558 360 535 470 562 600 541 750 560 900 530 1040 559 1200 535V620H0Z" fill="#0c0d13"/>
+<!-- Mara, silhouetted in her travel coat -->
+<path d="M535 620Q540 558 558 510L548 467Q548 447 568 440L585 440Q606 448 606 470L597 510Q619 560 625 620Z" fill="#080a11" stroke="#05060a" stroke-width="4"/>
+<circle cx="578" cy="426" r="23" fill="#10111a"/><path d="M554 427Q547 393 577 393Q607 394 601 430L590 414 568 412Z" fill="#080a11"/>
+<path d="M552 466 520 514 539 524 564 488M603 468 634 512 618 525 590 489" fill="#10111a" stroke="#080a11" stroke-width="4"/>
+<path d="M520 0V620M1180 0V620" stroke="#ffb0a2" stroke-opacity=".12" stroke-width="2"/>
+<text x="54" y="72" fill="#ffb0a2" font-family="monospace" font-size="17" letter-spacing="5">CRIMSON ECLIPSE / CHAPTER 02</text>
+<text x="54" y="112" fill="#f7eee8" font-family="Georgia,serif" font-size="32">THE GATE BENEATH THE SEA</text>
+</svg>
