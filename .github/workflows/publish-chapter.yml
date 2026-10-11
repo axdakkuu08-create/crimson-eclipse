@@ -1,0 +1,119 @@
+name: Publish a Crimson Eclipse Chapter
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Chapter title"
+        required: true
+        type: string
+      kicker:
+        description: "Chapter label, for example CHAPTER 03 / THE RED HARBOR"
+        required: false
+        type: string
+      body:
+        description: "Main story text"
+        required: true
+        type: string
+      image:
+        description: "Cover illustration URL or repository-relative path"
+        required: false
+        type: string
+      image_alt:
+        description: "Cover illustration description"
+        required: false
+        type: string
+      panel_image:
+        description: "Optional first comic panel image URL or repository-relative path"
+        required: false
+        type: string
+      panel_caption:
+        description: "Optional first panel caption"
+        required: false
+        type: string
+      panel_narration:
+        description: "Optional first panel narration"
+        required: false
+        type: string
+      panel_dialogue:
+        description: "Optional first panel dialogue"
+        required: false
+        type: string
+      ending:
+        description: "Optional chapter ending / cliffhanger"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          ref: Main
+
+      - name: Add chapter to published story
+        env:
+          CHAPTER_TITLE: ${{ inputs.title }}
+          CHAPTER_KICKER: ${{ inputs.kicker }}
+          CHAPTER_BODY: ${{ inputs.body }}
+          CHAPTER_IMAGE: ${{ inputs.image }}
+          CHAPTER_IMAGE_ALT: ${{ inputs.image_alt }}
+          PANEL_IMAGE: ${{ inputs.panel_image }}
+          PANEL_CAPTION: ${{ inputs.panel_caption }}
+          PANEL_NARRATION: ${{ inputs.panel_narration }}
+          PANEL_DIALOGUE: ${{ inputs.panel_dialogue }}
+          CHAPTER_ENDING: ${{ inputs.ending }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          path = Path("chapters.json")
+          try:
+              chapters = json.loads(path.read_text(encoding="utf-8"))
+          except FileNotFoundError:
+              chapters = []
+          if not isinstance(chapters, list):
+              raise SystemExit("chapters.json must contain a JSON array.")
+          title = os.environ.get("CHAPTER_TITLE", "").strip()
+          body = os.environ.get("CHAPTER_BODY", "").strip()
+          if not title or not body:
+              raise SystemExit("Both a chapter title and story text are required.")
+
+          panels = []
+          panel = {
+              "image": os.environ.get("PANEL_IMAGE", "").strip(),
+              "caption": os.environ.get("PANEL_CAPTION", "").strip(),
+              "narration": os.environ.get("PANEL_NARRATION", "").strip(),
+              "dialogue": os.environ.get("PANEL_DIALOGUE", "").strip(),
+          }
+          if any(panel.values()):
+              panels.append(panel)
+
+          chapter = {
+              "kicker": os.environ.get("CHAPTER_KICKER", "").strip(),
+              "title": title[:140],
+              "body": body[:12000],
+              "image": os.environ.get("CHAPTER_IMAGE", "").strip(),
+              "imageAlt": os.environ.get("CHAPTER_IMAGE_ALT", "").strip()[:250],
+              "panels": panels,
+              "ending": os.environ.get("CHAPTER_ENDING", "").strip()[:2500],
+              "sources": []
+          }
+          chapters.append(chapter)
+          path.write_text(json.dumps(chapters, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(f"Prepared published chapter: {title}")
+          PY
+
+      - name: Commit and push chapter
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chapters.json
+          git commit -m "Publish chapter: ${{ inputs.title }}"
+          git push origin HEAD:Main
