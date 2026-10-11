@@ -51,6 +51,15 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Restrict publishing to the repository owner
+        env:
+          WORKFLOW_ACTOR: ${{ github.actor }}
+        run: |
+          if [ "$WORKFLOW_ACTOR" != "axdakkuu08-create" ]; then
+            echo "Only the repository owner account axdakkuu08-create can publish chapters."
+            exit 1
+          fi
+
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
@@ -115,5 +124,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add chapters.json
-          git commit -m "Publish chapter: ${{ inputs.title }}"
+          git commit -m "Publish chapter through owner workflow"
           git push origin HEAD:Main
