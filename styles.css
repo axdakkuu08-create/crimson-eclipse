@@ -82,3 +82,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:26px clamp(18
 @keyframes comicSlideIn{from{opacity:.25;transform:translateX(14px) scale(.99);filter:blur(2px)}to{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}}
 @media(prefers-reduced-motion:reduce){.slide.is-active{animation:none!important}.slide svg,.slide-dot{transition:none!important}}
 @media(max-width:520px){.slideshow-controls{padding:10px;gap:8px}.slide-arrow{flex-basis:36px;width:36px;height:36px}.slide-dots{gap:7px}.slide-status{min-width:36px;font-size:9px}.slide figcaption{font-size:9px;padding:11px 12px}}
+
+.chapter-hero-illustration{margin:30px 0 38px;border:1px solid var(--ink);background:#17171b;box-shadow:9px 9px 0 rgba(217,13,43,.16);overflow:hidden}
+.chapter-hero-illustration img{display:block;width:100%;height:auto;max-height:560px;object-fit:cover;margin:0;border:0}
+.chapter-hero-illustration figcaption{padding:12px 15px;color:#d9d0c7;background:#17171b;font:10px 'DM Mono',monospace;letter-spacing:.12em}
