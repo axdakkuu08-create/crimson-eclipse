@@ -108,12 +108,53 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       img.loading = 'lazy';
       img.referrerPolicy = 'no-referrer';
       img.onerror = () => img.remove();
+      img.className = 'chapter-cover';
       section.appendChild(img);
     }
 
     const body = document.createElement('p');
     body.textContent = chapter.body || '';
     section.appendChild(body);
+
+    if (Array.isArray(chapter.panels)) {
+      chapter.panels.forEach((panel, panelIndex) => {
+        const panelWrap = document.createElement('article');
+        panelWrap.className = 'published-comic-panel';
+        if (panel.caption) {
+          const caption = document.createElement('h3');
+          caption.className = 'published-panel-caption';
+          caption.textContent = panel.caption;
+          panelWrap.appendChild(caption);
+        }
+        if (panel.image) {
+          const img = document.createElement('img');
+          img.src = panel.image;
+          img.alt = panel.imageAlt || panel.caption || ('Comic panel ' + (panelIndex + 1));
+          img.loading = 'lazy';
+          img.onerror = () => img.remove();
+          panelWrap.appendChild(img);
+        }
+        if (panel.narration) {
+          const narration = document.createElement('p');
+          narration.className = 'published-panel-narration';
+          narration.textContent = panel.narration;
+          panelWrap.appendChild(narration);
+        }
+        if (panel.dialogue) {
+          const dialogue = document.createElement('blockquote');
+          dialogue.className = 'published-panel-dialogue';
+          dialogue.textContent = panel.dialogue;
+          panelWrap.appendChild(dialogue);
+        }
+        section.appendChild(panelWrap);
+      });
+    }
+    if (chapter.ending) {
+      const ending = document.createElement('p');
+      ending.className = 'published-chapter-ending';
+      ending.textContent = chapter.ending;
+      section.appendChild(ending);
+    }
 
     if (Array.isArray(chapter.sources) && chapter.sources.length) {
       const sourceList = document.createElement('div');
