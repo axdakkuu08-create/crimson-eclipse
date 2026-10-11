@@ -35,7 +35,7 @@
   <main class="editor-wrap">
     <p class="eyebrow">CONTENT MANAGEMENT · LOCAL EDITOR</p>
     <h1>Write the next<br><em>chapter.</em></h1>
-    <p class="intro-note">Add new story sections, illustrations, and reference links without editing code. Changes save in this browser. Export your content as JSON so you can back it up or import it on another device.</p>
+    <p class="intro-note">Create chapters with a cover, multiple comic panels, captions, narration, character dialogue, and a cliffhanger. Changes save in this browser. Export JSON to back up your work; publishing to all readers still requires updating the repository's published content.</p>
 
     <form id="chapterForm">
       <div class="editor-grid">
@@ -43,7 +43,12 @@
         <div class="field"><label for="title">Title *</label><input id="title" maxlength="140" required placeholder="The city beneath the sea"></div>
         <div class="field full"><label for="body">Story text *</label><textarea id="body" maxlength="12000" required placeholder="Write your chapter text here..."></textarea></div>
         <div class="field full"><label for="image">Illustration image URL (optional)</label><input id="image" type="url" placeholder="https://example.com/illustration.jpg"><span class="hint">Use a direct, publicly accessible image URL. For images you own, you can add the image file to your repository and use its relative path, such as assets/chapter-2.jpg.</span></div>
-        <div class="field full"><label for="imageAlt">Image description (accessibility)</label><input id="imageAlt" maxlength="250" placeholder="A red moon above a ruined city"></div>
+        <div class="field full"><label for="imageAlt">Cover image description (accessibility)</label><input id="imageAlt" maxlength="250" placeholder="A red moon above a ruined city"></div>
+        <div class="field full panel-builder">
+          <div class="panel-builder-head"><div><label>Comic panels</label><p class="hint">Add image panels, captions, narration, and character dialogue. The cover image above is optional.</p></div><button class="action secondary" type="button" id="addPanel">+ ADD PANEL</button></div>
+          <div id="panelEditorList" class="panel-editor-list"></div>
+        </div>
+        <div class="field full"><label for="ending">Chapter ending / cliffhanger (optional)</label><textarea id="ending" maxlength="2500" placeholder="A final line that makes readers want the next chapter..."></textarea></div>
         <div class="field full"><label for="sources">Additional sources / reference links</label><textarea id="sources" placeholder="One per line: Label | https://example.com&#10;Example: Artist portfolio | https://example.com/art"></textarea><span class="hint">These become source links beneath the chapter. Only add links you have permission to use; links do not automatically copy content from external sites.</span></div>
       </div>
       <div class="editor-actions">
@@ -61,7 +66,7 @@
       <input id="importFile" type="file" accept=".json,application/json" hidden>
       <button class="action danger" type="button" id="deleteAll">DELETE ALL ADDED CHAPTERS</button>
     </div>
-    <p class="hint">To publish your updates for everyone, export the JSON and follow the README instructions to transfer your content into the hosted site. Browser-saved content is not automatically shared with visitors or other devices.</p>
+    <p class="hint">Browser storage is private to this browser and does not publish changes for all readers. Export a JSON backup before clearing browser data. To publish chapters, commit the chapter data to your GitHub website repository.</p>
   </main>
   <script src="editor.js"></script>
 </body>
