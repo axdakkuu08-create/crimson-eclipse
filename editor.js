@@ -35,6 +35,7 @@
   }
   function safeUrl(value) {
     if (!value) return true;
+    if (/^(\.\.\/|\.\/|assets\/|images\/)/i.test(value)) return !value.includes('..');
     try { return ['http:', 'https:'].includes(new URL(value).protocol); }
     catch (e) { return false; }
   }
