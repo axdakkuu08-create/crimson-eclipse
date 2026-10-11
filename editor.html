@@ -33,9 +33,9 @@
     <a class="icon-btn" href="index.html">← <span>Back to story</span></a>
   </header>
   <main class="editor-wrap">
-    <p class="eyebrow">CONTENT MANAGEMENT · LOCAL EDITOR</p>
+    <p class="eyebrow">CREATOR WORKSPACE · LOCAL DRAFTS</p>
     <h1>Write the next<br><em>chapter.</em></h1>
-    <p class="intro-note">Create chapters with a cover, multiple comic panels, captions, narration, character dialogue, and a cliffhanger. Changes save in this browser. Export JSON to back up your work; publishing to all readers still requires updating the repository's published content.</p>
+    <p class="intro-note">Create chapter drafts with a cover, comic panels, captions, narration, dialogue, and a cliffhanger. Drafts save only in this browser. This page is not a secure login, and anyone with its URL can open it; only changes committed by you to the GitHub repository become the official published story. Keep the repository under your control and do not add collaborators if you want to be the only person who can publish chapters.</p>
 
     <form id="chapterForm">
       <div class="editor-grid">
@@ -66,7 +66,7 @@
       <input id="importFile" type="file" accept=".json,application/json" hidden>
       <button class="action danger" type="button" id="deleteAll">DELETE ALL ADDED CHAPTERS</button>
     </div>
-    <p class="hint">Browser storage is private to this browser and does not publish changes for all readers. Export a JSON backup before clearing browser data. To publish chapters, commit the chapter data to your GitHub website repository.</p>
+    <p class="hint">These are local drafts, not the published story. This editor has no secure sign-in, so it cannot restrict who opens this page. To keep published chapters under your control, make changes to the website files in your GitHub repository yourself and do not grant other people write access. Export a JSON backup before clearing browser data.</p>
   </main>
   <script src="editor.js"></script>
 </body>
