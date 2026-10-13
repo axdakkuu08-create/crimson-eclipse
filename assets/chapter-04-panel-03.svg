@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+<title id="title">Panel 3 — The stair below the bell</title><desc id="desc">Mara descends stone stairs into a flooded chapel. A huge bell hangs above dark still water, with no clapper inside.</desc>
+<defs><linearGradient id="vault" x2="0" y2="1"><stop stop-color="#292631"/><stop offset="1" stop-color="#07080d"/></linearGradient></defs>
+<rect width="1000" height="560" fill="url(#vault)"/><path d="M0 0H1000V90Q760 145 500 90T0 90Z" fill="#48404a"/><path d="M80 560V180Q80 100 160 100H840Q920 100 920 180V560" fill="none" stroke="#756a70" stroke-width="12"/><path d="M180 560V220Q180 160 240 160H760Q820 160 820 220V560" fill="none" stroke="#514750" stroke-width="8"/>
+<g fill="#17171b" stroke="#9a7e78" stroke-width="4"><path d="M385 100H615L585 175H415Z"/><path d="M415 175Q390 235 430 280L450 305H550L570 280Q610 235 585 175Z"/><path d="M450 305H550L565 330H435Z"/></g><path d="M500 80V175" stroke="#e10b28" stroke-width="5"/>
+<path d="M0 430Q200 410 390 438T760 425T1000 435V560H0Z" fill="#111b26"/><path d="M0 470Q200 450 400 478T800 465T1000 470M0 515Q250 492 500 520T1000 512" fill="none" stroke="#77909b" stroke-width="4"/>
+<g fill="#5b606b" stroke="#17171b" stroke-width="5"><path d="M95 560V455H185V560ZM200 560V425H300V560ZM700 560V425H800V560ZM820 560V455H905V560Z"/></g>
+<path d="M350 560L380 500H410L430 560M650 560L620 500H590L570 560" fill="#1453a6" stroke="#08090e" stroke-width="5"/><circle cx="500" cy="500" r="20" fill="#d9b7a6" stroke="#08090e" stroke-width="4"/><circle cx="500" cy="350" r="38" fill="none" stroke="#d90d2b" stroke-width="3" stroke-dasharray="5 9"/><text x="36" y="45" fill="#f5f0e8" font-family="monospace" font-size="18" letter-spacing="4">03 / THE STAIR BELOW THE BELL</text>
+</svg>
