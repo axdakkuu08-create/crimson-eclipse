@@ -90,7 +90,18 @@ continueBtn.addEventListener('click', () => {
   const dots = Array.from(root.querySelectorAll('.slide-dot'));
   const prev = root.querySelector('#slidePrev');
   const next = root.querySelector('#slideNext');
-  const pause = root.querySelector('#slidePause');
+  let pause = root.querySelector('#slidePause');
+  if (!pause) {
+    pause = document.createElement('button');
+    pause.type = 'button';
+    pause.className = 'slide-arrow';
+    pause.id = 'slidePause';
+    pause.textContent = 'PAUSE';
+    pause.setAttribute('aria-label', 'Pause slideshow');
+    pause.setAttribute('aria-pressed', 'false');
+    const controls = root.querySelector('.slideshow-controls');
+    if (controls) controls.appendChild(pause);
+  }
   if (!slides.length || !prev || !next) return;
 
   let active = 0;
