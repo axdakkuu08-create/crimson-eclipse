@@ -1,0 +1,41 @@
+[
+  {
+    "kicker": "CHAPTER 04 · THE BELL BENEATH NOCTIS",
+    "title": "The Bell Beneath Noctis",
+    "body": "Mara's shadow steps away from the wall. Orin's coat drips seawater onto the dry street, and the moon above Noctis opens like an eye. When a bell rings beneath the city—though every bell was silenced a century ago—Mara follows a lantern-bearing guide into the market of borrowed names.",
+    "image": "assets/chapter-04-cover.svg",
+    "imageAlt": "Mara stands between two shadows in Noctis beneath a crimson moon shaped like an opening eye",
+    "panels": [
+      {
+        "caption": "PANEL 01 — THE SECOND SHADOW",
+        "image": "assets/chapter-04-panel-01.svg",
+        "imageAlt": "Mara faces a detached shadow while seawater drips from Orin's coat",
+        "narration": "Mara's shadow peels away from the wall. Orin watches the drops falling from his sleeves, though the stones beneath him remain dry.",
+        "dialogue": "The shadow whispers, “The keeper carries the key.” Orin answers, “That voice is not yours.”"
+      },
+      {
+        "caption": "PANEL 02 — THE MARKET OF BORROWED NAMES",
+        "image": "assets/chapter-04-panel-02.svg",
+        "imageAlt": "A lantern-bearing guide stands beneath hanging paper tags with forgotten names",
+        "narration": "A girl called Sable leads Mara through a market where names hang on paper like fruit. Some tags are centuries old. One is still wet with fresh ink.",
+        "dialogue": "“The city doesn't steal memories,” Sable says. “It shelves them. Someone has started taking them down.”"
+      },
+      {
+        "caption": "PANEL 03 — THE STAIR BELOW THE BELL",
+        "image": "assets/chapter-04-panel-03.svg",
+        "imageAlt": "Mara descends toward a clapperless bell suspended above dark water",
+        "narration": "Beneath a flooded chapel, a bronze bell hangs above water so still it reflects a sky that no longer exists. There is no clapper inside it. Mara's compass points straight down.",
+        "dialogue": "“If it rings again, don't answer,” Orin warns. “Whatever calls you will use a voice you love.”"
+      },
+      {
+        "caption": "PANEL 04 — THE OTHER MARA",
+        "image": "assets/chapter-04-panel-04.svg",
+        "imageAlt": "A second Mara stands behind glass inside a circular chamber",
+        "narration": "The bell sounds without moving. For one heartbeat, Mara hears her grandmother laugh. The water parts around a glass chamber, revealing another girl in the same blue coat.",
+        "dialogue": "The girl opens her eyes. “You are the echo,” she says. “I am the memory.”"
+      }
+    ],
+    "ending": "Behind the glass, the other Mara raises her hand. Every shadow in Noctis turns toward the chamber—including Orin's. Then the second Mara mouths three words the bell was never meant to carry: “The moon is listening.”",
+    "sources": []
+  }
+]
