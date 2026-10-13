@@ -90,10 +90,12 @@ continueBtn.addEventListener('click', () => {
   const dots = Array.from(root.querySelectorAll('.slide-dot'));
   const prev = root.querySelector('#slidePrev');
   const next = root.querySelector('#slideNext');
+  const pause = root.querySelector('#slidePause');
   if (!slides.length || !prev || !next) return;
 
   let active = 0;
   let timer = null;
+  let userPaused = false;
   let touchStartX = 0;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const delay = 5200;
@@ -125,11 +127,18 @@ continueBtn.addEventListener('click', () => {
   function stopAuto(){ if (timer) window.clearInterval(timer); timer = null; }
   function startAuto(){
     stopAuto();
-    if (reducedMotion || document.hidden) return;
+    if (reducedMotion || document.hidden || userPaused) return;
     timer = window.setInterval(() => showSlide(active + 1, false), delay);
   }
   prev.addEventListener('click', () => { showSlide(active - 1); startAuto(); });
   next.addEventListener('click', () => { showSlide(active + 1); startAuto(); });
+  if (pause) pause.addEventListener('click', () => {
+    userPaused = !userPaused;
+    pause.textContent = userPaused ? 'PLAY' : 'PAUSE';
+    pause.setAttribute('aria-pressed', String(userPaused));
+    pause.setAttribute('aria-label', userPaused ? 'Start automatic slideshow' : 'Pause automatic slideshow');
+    if (userPaused) stopAuto(); else startAuto();
+  });
   dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); startAuto(); }));
   root.addEventListener('mouseenter', stopAuto);
   root.addEventListener('mouseleave', startAuto);
